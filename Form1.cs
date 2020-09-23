@@ -416,6 +416,7 @@ namespace PrimitivasGráficas
             poli.aplicarMA();
             Console.WriteLine("asas");
 
+            Console.WriteLine("asas");
 
         }
 
