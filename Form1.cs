@@ -342,12 +342,10 @@ namespace PrimitivasGráficas
 
         private void resetaPontos()
         {
-            rbOrigem.Checked = true;
-            txXcoord.Text = ""+0.0;
+            rbOrigem.Checked = true;          
             txXescala.Text = "" + 0.0;
             txXtrans.Text = "" + 0.0;
-            txAngulo.Text= "" + 0;
-            txYcoord.Text = "" + 0.0;
+            txAngulo.Text= "" + 0;            
             txYescala.Text = "" + 0.0;
             txYtrans.Text = "" + 0.0;
         }
@@ -368,15 +366,9 @@ namespace PrimitivasGráficas
                     pontRotacao.X = poli.retornaCX();
                     pontRotacao.Y = poli.retornaCY();
 
-                }
-                else if (rbCoord.Checked)
-                {
-                    pontRotacao.X = double.Parse(txXcoord.Text);
-                    pontRotacao.Y = double.Parse(txYcoord.Text);
-                }
+                }           
                                     
-            }
-            catch (Exception e) { }
+            }catch (Exception e) { }
             
             try
             {
@@ -413,10 +405,7 @@ namespace PrimitivasGráficas
              poli.escala(escalaX, escalaY);
 
             poli.translacao(transX, transY);
-            poli.aplicarMA();
-            Console.WriteLine("asas");
-
-            Console.WriteLine("asas");
+            poli.aplicarMA();            
 
         }
 

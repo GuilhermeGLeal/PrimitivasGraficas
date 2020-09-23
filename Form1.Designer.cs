@@ -43,11 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.rbOrigem = new System.Windows.Forms.RadioButton();
             this.rbCentro = new System.Windows.Forms.RadioButton();
-            this.rbCoord = new System.Windows.Forms.RadioButton();
-            this.txXcoord = new System.Windows.Forms.TextBox();
-            this.txYcoord = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -184,7 +179,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1092, 369);
+            this.label4.Location = new System.Drawing.Point(1165, 364);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 17);
             this.label4.TabIndex = 13;
@@ -193,7 +188,7 @@
             // rbOrigem
             // 
             this.rbOrigem.AutoSize = true;
-            this.rbOrigem.Location = new System.Drawing.Point(1098, 403);
+            this.rbOrigem.Location = new System.Drawing.Point(1168, 393);
             this.rbOrigem.Name = "rbOrigem";
             this.rbOrigem.Size = new System.Drawing.Size(72, 21);
             this.rbOrigem.TabIndex = 14;
@@ -204,7 +199,7 @@
             // rbCentro
             // 
             this.rbCentro.AutoSize = true;
-            this.rbCentro.Location = new System.Drawing.Point(1199, 403);
+            this.rbCentro.Location = new System.Drawing.Point(1304, 393);
             this.rbCentro.Name = "rbCentro";
             this.rbCentro.Size = new System.Drawing.Size(69, 21);
             this.rbCentro.TabIndex = 15;
@@ -212,57 +207,10 @@
             this.rbCentro.Text = "centro";
             this.rbCentro.UseVisualStyleBackColor = true;
             // 
-            // rbCoord
-            // 
-            this.rbCoord.AutoSize = true;
-            this.rbCoord.Location = new System.Drawing.Point(1299, 403);
-            this.rbCoord.Name = "rbCoord";
-            this.rbCoord.Size = new System.Drawing.Size(105, 21);
-            this.rbCoord.TabIndex = 16;
-            this.rbCoord.TabStop = true;
-            this.rbCoord.Text = "coordenada";
-            this.rbCoord.UseVisualStyleBackColor = true;
-            // 
-            // txXcoord
-            // 
-            this.txXcoord.Location = new System.Drawing.Point(1278, 442);
-            this.txXcoord.MaxLength = 4;
-            this.txXcoord.Name = "txXcoord";
-            this.txXcoord.Size = new System.Drawing.Size(42, 22);
-            this.txXcoord.TabIndex = 17;
-            this.txXcoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txYcoord
-            // 
-            this.txYcoord.Location = new System.Drawing.Point(1349, 442);
-            this.txYcoord.MaxLength = 4;
-            this.txYcoord.Name = "txYcoord";
-            this.txYcoord.Size = new System.Drawing.Size(42, 22);
-            this.txYcoord.TabIndex = 18;
-            this.txYcoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1296, 422);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 17);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "x";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1359, 422);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 17);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "y";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1284, 564);
+            this.label7.Location = new System.Drawing.Point(1305, 498);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 17);
             this.label7.TabIndex = 21;
@@ -271,7 +219,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1337, 585);
+            this.label8.Location = new System.Drawing.Point(1358, 519);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 17);
             this.label8.TabIndex = 25;
@@ -280,7 +228,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1274, 585);
+            this.label9.Location = new System.Drawing.Point(1295, 519);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 17);
             this.label9.TabIndex = 24;
@@ -288,7 +236,7 @@
             // 
             // txYescala
             // 
-            this.txYescala.Location = new System.Drawing.Point(1322, 605);
+            this.txYescala.Location = new System.Drawing.Point(1343, 539);
             this.txYescala.MaxLength = 4;
             this.txYescala.Name = "txYescala";
             this.txYescala.Size = new System.Drawing.Size(42, 22);
@@ -297,7 +245,7 @@
             // 
             // txXescala
             // 
-            this.txXescala.Location = new System.Drawing.Point(1251, 605);
+            this.txXescala.Location = new System.Drawing.Point(1272, 539);
             this.txXescala.MaxLength = 4;
             this.txXescala.Name = "txXescala";
             this.txXescala.Size = new System.Drawing.Size(42, 22);
@@ -307,7 +255,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1332, 507);
+            this.label10.Location = new System.Drawing.Point(1353, 450);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 17);
             this.label10.TabIndex = 29;
@@ -316,7 +264,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1269, 507);
+            this.label11.Location = new System.Drawing.Point(1290, 450);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(14, 17);
             this.label11.TabIndex = 28;
@@ -324,7 +272,7 @@
             // 
             // txYtrans
             // 
-            this.txYtrans.Location = new System.Drawing.Point(1322, 527);
+            this.txYtrans.Location = new System.Drawing.Point(1343, 470);
             this.txYtrans.MaxLength = 4;
             this.txYtrans.Name = "txYtrans";
             this.txYtrans.Size = new System.Drawing.Size(42, 22);
@@ -333,7 +281,7 @@
             // 
             // txXtrans
             // 
-            this.txXtrans.Location = new System.Drawing.Point(1251, 527);
+            this.txXtrans.Location = new System.Drawing.Point(1272, 470);
             this.txXtrans.MaxLength = 4;
             this.txXtrans.Name = "txXtrans";
             this.txXtrans.Size = new System.Drawing.Size(42, 22);
@@ -343,7 +291,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1275, 484);
+            this.label12.Location = new System.Drawing.Point(1296, 427);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 17);
             this.label12.TabIndex = 30;
@@ -352,7 +300,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1284, 650);
+            this.label13.Location = new System.Drawing.Point(1305, 570);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 17);
             this.label13.TabIndex = 31;
@@ -360,7 +308,7 @@
             // 
             // txAngulo
             // 
-            this.txAngulo.Location = new System.Drawing.Point(1287, 673);
+            this.txAngulo.Location = new System.Drawing.Point(1308, 590);
             this.txAngulo.MaxLength = 3;
             this.txAngulo.Name = "txAngulo";
             this.txAngulo.Size = new System.Drawing.Size(42, 22);
@@ -406,11 +354,6 @@
             this.Controls.Add(this.txYescala);
             this.Controls.Add(this.txXescala);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txYcoord);
-            this.Controls.Add(this.txXcoord);
-            this.Controls.Add(this.rbCoord);
             this.Controls.Add(this.rbCentro);
             this.Controls.Add(this.rbOrigem);
             this.Controls.Add(this.label4);
@@ -450,11 +393,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton rbOrigem;
         private System.Windows.Forms.RadioButton rbCentro;
-        private System.Windows.Forms.RadioButton rbCoord;
-        private System.Windows.Forms.TextBox txXcoord;
-        private System.Windows.Forms.TextBox txYcoord;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

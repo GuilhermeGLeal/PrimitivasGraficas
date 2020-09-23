@@ -14,7 +14,6 @@ namespace PrimitivasGráficas
             double dy = pontos.YFinal - pontos.YInicio;
             double dx = pontos.XFinal - pontos.XInicio;
             double m = 0.0, inc, x, y;
-
             y = pontos.YInicio;
             x = pontos.XInicio;
 
