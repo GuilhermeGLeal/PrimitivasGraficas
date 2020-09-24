@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,13 +75,14 @@ namespace PrimitivasGráficas
             if(X!= 0 && Y != 0)
             {
                 double[,] matrizTrans = new double[3, 3];
+                double[,] matrizAux = new double[3, 3];
                 double soma;
                 matrizTrans[0, 0] = 1.0;
                 matrizTrans[1, 1] = 1.0;
                 matrizTrans[2, 2] = 1.0;
                 matrizTrans[0, 2] = X;
                 matrizTrans[1, 2] = Y;
-
+                matrizAux = retMatAux(matrizAcumulada);
                 for (int linha = 0; linha < 3; linha++)
                 {
                     for (int coluna = 0; coluna < 3; coluna++)
@@ -89,7 +91,7 @@ namespace PrimitivasGráficas
 
                         for (int k  = 0; k < 3; k++)
                         {
-                            soma += matrizTrans[linha, k] * this.matrizAcumulada[k][coluna];
+                            soma += matrizTrans[linha, k] * matrizAux[k,coluna];
                         }
 
                         this.matrizAcumulada[linha][coluna] = soma;
@@ -97,6 +99,18 @@ namespace PrimitivasGráficas
                 }
             }
 
+        }
+        public double[,] retMatAux(double[][] matrizAcumulada)
+        {
+            double[,] matrizAux = new double[3, 3];
+            for(int i=0;i<3;i++)
+            {
+                for(int j=0;j<3;j++)
+                {
+                    matrizAux[i, j] = matrizAcumulada[i][j];
+                }
+            }
+            return matrizAux;
         }
         
         public double retornaCX()
