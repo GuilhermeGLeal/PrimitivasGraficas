@@ -131,7 +131,8 @@ namespace PrimitivasGráficas
             matrizEscala[1, 1] = fatorY;
             matrizEscala[2, 2] = 1.0;
             double soma;
-
+            double [,]matrizAux = new double[3, 3];
+            // chamar a função de atribuir a matriz aux;
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
@@ -159,7 +160,7 @@ namespace PrimitivasGráficas
             matrizAngulo[1, 0] = Math.Sin(rad);
             matrizAngulo[1, 1] = Math.Cos(rad);
             matrizAngulo[2, 2] = 1.0;
-
+            double[,] matrizAux = new double[3, 3];
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
