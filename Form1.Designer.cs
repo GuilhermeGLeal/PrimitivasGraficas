@@ -57,7 +57,23 @@
             this.txAngulo = new System.Windows.Forms.TextBox();
             this.btAplicarTrans = new System.Windows.Forms.Button();
             this.btResetarCamp = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txShearX = new System.Windows.Forms.TextBox();
+            this.txShearY = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbPoligonos = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtPontosPoligono = new System.Windows.Forms.DataGridView();
+            this.colunaX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txReflexaoY = new System.Windows.Forms.TextBox();
+            this.txReflexaoX = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPrincp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtPontosPoligono)).BeginInit();
             this.SuspendLayout();
             // 
             // picBoxPrincp
@@ -221,18 +237,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(1358, 519);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 17);
+            this.label8.Size = new System.Drawing.Size(17, 17);
             this.label8.TabIndex = 25;
-            this.label8.Text = "y";
+            this.label8.Text = "Y";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1295, 519);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 17);
+            this.label9.Size = new System.Drawing.Size(17, 17);
             this.label9.TabIndex = 24;
-            this.label9.Text = "x";
+            this.label9.Text = "X";
             // 
             // txYescala
             // 
@@ -257,18 +273,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(1353, 450);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(15, 17);
+            this.label10.Size = new System.Drawing.Size(17, 17);
             this.label10.TabIndex = 29;
-            this.label10.Text = "y";
+            this.label10.Text = "Y";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(1290, 450);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(14, 17);
+            this.label11.Size = new System.Drawing.Size(17, 17);
             this.label11.TabIndex = 28;
-            this.label11.Text = "x";
+            this.label11.Text = "X";
             // 
             // txYtrans
             // 
@@ -309,7 +325,7 @@
             // txAngulo
             // 
             this.txAngulo.Location = new System.Drawing.Point(1308, 590);
-            this.txAngulo.MaxLength = 3;
+            this.txAngulo.MaxLength = 4;
             this.txAngulo.Name = "txAngulo";
             this.txAngulo.Size = new System.Drawing.Size(42, 22);
             this.txAngulo.TabIndex = 32;
@@ -317,7 +333,7 @@
             // 
             // btAplicarTrans
             // 
-            this.btAplicarTrans.Location = new System.Drawing.Point(1095, 745);
+            this.btAplicarTrans.Location = new System.Drawing.Point(1098, 760);
             this.btAplicarTrans.Name = "btAplicarTrans";
             this.btAplicarTrans.Size = new System.Drawing.Size(119, 30);
             this.btAplicarTrans.TabIndex = 33;
@@ -327,7 +343,7 @@
             // 
             // btResetarCamp
             // 
-            this.btResetarCamp.Location = new System.Drawing.Point(1272, 745);
+            this.btResetarCamp.Location = new System.Drawing.Point(1272, 760);
             this.btResetarCamp.Name = "btResetarCamp";
             this.btResetarCamp.Size = new System.Drawing.Size(132, 30);
             this.btResetarCamp.TabIndex = 34;
@@ -335,11 +351,168 @@
             this.btResetarCamp.UseVisualStyleBackColor = true;
             this.btResetarCamp.Click += new System.EventHandler(this.BtResetarCamp_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1290, 618);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 17);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Cisalhamento";
+            // 
+            // txShearX
+            // 
+            this.txShearX.Location = new System.Drawing.Point(1272, 655);
+            this.txShearX.MaxLength = 4;
+            this.txShearX.Name = "txShearX";
+            this.txShearX.Size = new System.Drawing.Size(42, 22);
+            this.txShearX.TabIndex = 36;
+            this.txShearX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txShearY
+            // 
+            this.txShearY.Location = new System.Drawing.Point(1343, 655);
+            this.txShearY.MaxLength = 4;
+            this.txShearY.Name = "txShearY";
+            this.txShearY.Size = new System.Drawing.Size(42, 22);
+            this.txShearY.TabIndex = 37;
+            this.txShearY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1278, 635);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 17);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "X";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1358, 635);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(17, 17);
+            this.label14.TabIndex = 39;
+            this.label14.Text = "Y";
+            // 
+            // cbPoligonos
+            // 
+            this.cbPoligonos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPoligonos.FormattingEnabled = true;
+            this.cbPoligonos.Location = new System.Drawing.Point(1093, 468);
+            this.cbPoligonos.Name = "cbPoligonos";
+            this.cbPoligonos.Size = new System.Drawing.Size(147, 24);
+            this.cbPoligonos.TabIndex = 40;
+            this.cbPoligonos.SelectedIndexChanged += new System.EventHandler(this.cbPoligonos_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1111, 448);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 17);
+            this.label15.TabIndex = 41;
+            this.label15.Text = "Poligonos";
+            // 
+            // dtPontosPoligono
+            // 
+            this.dtPontosPoligono.AllowUserToAddRows = false;
+            this.dtPontosPoligono.AllowUserToDeleteRows = false;
+            this.dtPontosPoligono.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtPontosPoligono.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colunaX,
+            this.y});
+            this.dtPontosPoligono.Location = new System.Drawing.Point(1090, 519);
+            this.dtPontosPoligono.Name = "dtPontosPoligono";
+            this.dtPontosPoligono.ReadOnly = true;
+            this.dtPontosPoligono.RowHeadersVisible = false;
+            this.dtPontosPoligono.RowHeadersWidth = 51;
+            this.dtPontosPoligono.RowTemplate.Height = 24;
+            this.dtPontosPoligono.Size = new System.Drawing.Size(150, 220);
+            this.dtPontosPoligono.TabIndex = 42;
+            // 
+            // colunaX
+            // 
+            this.colunaX.DataPropertyName = "x";
+            this.colunaX.HeaderText = "X";
+            this.colunaX.MinimumWidth = 6;
+            this.colunaX.Name = "colunaX";
+            this.colunaX.ReadOnly = true;
+            this.colunaX.Width = 50;
+            // 
+            // y
+            // 
+            this.y.DataPropertyName = "y";
+            this.y.HeaderText = "Y";
+            this.y.MinimumWidth = 6;
+            this.y.Name = "y";
+            this.y.ReadOnly = true;
+            this.y.Width = 50;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1358, 707);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(17, 17);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "Y";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1278, 707);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 17);
+            this.label17.TabIndex = 46;
+            this.label17.Text = "X";
+            // 
+            // txReflexaoY
+            // 
+            this.txReflexaoY.Location = new System.Drawing.Point(1343, 727);
+            this.txReflexaoY.MaxLength = 4;
+            this.txReflexaoY.Name = "txReflexaoY";
+            this.txReflexaoY.Size = new System.Drawing.Size(42, 22);
+            this.txReflexaoY.TabIndex = 45;
+            this.txReflexaoY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txReflexaoX
+            // 
+            this.txReflexaoX.Location = new System.Drawing.Point(1272, 727);
+            this.txReflexaoX.MaxLength = 4;
+            this.txReflexaoX.Name = "txReflexaoX";
+            this.txReflexaoX.Size = new System.Drawing.Size(42, 22);
+            this.txReflexaoX.TabIndex = 44;
+            this.txReflexaoX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(1292, 690);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 17);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "Reflexão";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1433, 802);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txReflexaoY);
+            this.Controls.Add(this.txReflexaoX);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.dtPontosPoligono);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.cbPoligonos);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txShearY);
+            this.Controls.Add(this.txShearX);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btResetarCamp);
             this.Controls.Add(this.btAplicarTrans);
             this.Controls.Add(this.txAngulo);
@@ -372,6 +545,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPrincp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtPontosPoligono)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,6 +581,21 @@
         private System.Windows.Forms.TextBox txAngulo;
         private System.Windows.Forms.Button btAplicarTrans;
         private System.Windows.Forms.Button btResetarCamp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txShearX;
+        private System.Windows.Forms.TextBox txShearY;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbPoligonos;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dtPontosPoligono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colunaX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn y;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txReflexaoY;
+        private System.Windows.Forms.TextBox txReflexaoX;
+        private System.Windows.Forms.Label label18;
     }
 }
 

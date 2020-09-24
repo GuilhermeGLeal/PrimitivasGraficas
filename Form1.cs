@@ -20,6 +20,8 @@ namespace PrimitivasGráficas
 
         private Poligono poligAtual;
         private Ponto2 inicial, atual;
+        private List<Poligono> listPoli;
+        private int ultimoselecionado;
 
         public Form1()
         {
@@ -30,7 +32,7 @@ namespace PrimitivasGráficas
             pontAtual = new Ponto();
             pontAtual.XInicio = -99999.0;
             pontAtual.XFinal = -1.0;
-
+           
             cbOpcoesLinha.SelectedIndex = 0;
             cbFormaSelecionada.SelectedIndex = 2;
             cbOpcoesCirculos.SelectedIndex = 0;
@@ -41,6 +43,7 @@ namespace PrimitivasGráficas
             atual = null;
             picBoxPrincp.Focus();
             resetaPontos();
+            ultimoselecionado = 0;
         }
 
         private void BtLimparTela_Click(object sender, EventArgs e)
@@ -54,6 +57,11 @@ namespace PrimitivasGráficas
             inicializarPolig();
             picBoxPrincp.Focus();
             resetaPontos();
+            listPoli = new List<Poligono>();
+            cbPoligonos.Items.Clear();
+            ultimoselecionado = 0;
+            
+
         }
 
         public void inicializarPolig()
@@ -231,6 +239,35 @@ namespace PrimitivasGráficas
           
         }
 
+        public void atualizaComboBox()
+        {
+            
+            listPoli = new List<Poligono>();
+            NoRedo aux = imagens.Inicio;
+            
+            while(aux != null)
+            {
+                if (aux.Poligon != null)
+                    listPoli.Add(aux.Poligon);
+
+                aux = aux.Prox;
+            }
+
+            List<string> posicoes = new List<string>();
+
+            for (int i = 0; i < listPoli.Count; i++)
+            {
+                posicoes.Add("Poligono: "+(i+1));
+
+            }
+
+            
+            cbPoligonos.Items.Clear();
+            cbPoligonos.Items.AddRange(posicoes.ToArray());
+            cbPoligonos.SelectedIndex = ultimoselecionado;
+            cbPoligonos_SelectedIndexChanged(null, null);
+        }
+
         private double verificaLimite(Ponto pontos)
         {
             double Raio = Math.Sqrt(Math.Pow((pontos.XFinal - pontos.XInicio), 2.0) + Math.Pow((pontos.YFinal - pontos.YInicio), 2.0));
@@ -270,6 +307,7 @@ namespace PrimitivasGráficas
 
                     chamaCriaFormas2();                    
                     pontAtual.resetaPontos();
+                    atualizaComboBox();
                     inicializarPolig();
                 }
             }
@@ -283,11 +321,12 @@ namespace PrimitivasGráficas
                 if (poligAtual == null)
                 {
                     poligAtual = new Poligono();
-
+                    
                     imagens.inserir(poligAtual, "POLIGONO");
                 }
                                     
                 criaPoligono(e);
+                
             }
             else
             {
@@ -317,6 +356,7 @@ namespace PrimitivasGráficas
             if (!imagens.isEmpty())
             {
                  recriaFormas();
+                atualizaComboBox();
             }
             else
             {
@@ -328,6 +368,7 @@ namespace PrimitivasGráficas
 
         private void BtTesteLinhas_Click(object sender, EventArgs e)
         {
+            /*
             BtLimparTela_Click(null, null);
             int i = 0;
             double xi = 400, yi = 100;
@@ -335,7 +376,7 @@ namespace PrimitivasGráficas
             bool flag;
 
             cbOpcoesLinha.SelectedIndex = 2;
-            flag = true;
+            flag = true;*/
 
         }
 
@@ -348,6 +389,10 @@ namespace PrimitivasGráficas
             txAngulo.Text= "" + 0;            
             txYescala.Text = "" + 0.0;
             txYtrans.Text = "" + 0.0;
+            txShearX.Text = "" + 0.0;
+            txShearY.Text = "" + 0.0;
+            txReflexaoX.Text = "" + 0.0;
+            txReflexaoY.Text = "" + 0.0;
         }
 
         private void aplicaTransformacoes(Poligono poli)
@@ -356,6 +401,8 @@ namespace PrimitivasGráficas
             double transX, transY;
             double escalaX, escalaY;
             double angulo;
+            double cisaX, cisaY;
+            double refleX, refleY;
             pontRotacao.X = 0;
             pontRotacao.Y = 0;
 
@@ -382,7 +429,7 @@ namespace PrimitivasGráficas
                 escalaX = double.Parse(txXescala.Text);
                 escalaY = double.Parse(txYescala.Text);
             }
-            catch (Exception e) { escalaX = 0.0; escalaY = 0.0; }
+            catch (Exception e) { escalaX = 1; escalaY = 1; }
 
             try
             {
@@ -390,9 +437,46 @@ namespace PrimitivasGráficas
             }
             catch (Exception e) { angulo = 0.0; }
 
+            try
+            {
+                cisaX = double.Parse(txShearX.Text);
+            }
+            catch (Exception e) { cisaX = 0.0; };
+
+            try
+            {
+                cisaY = double.Parse(txShearY.Text);
+            }
+            catch (Exception e) { cisaY = 0.0; };
+
+            try
+            {
+                refleX = double.Parse(txReflexaoX.Text);
+            }
+            catch (Exception e) { refleX = 0; };
+
+            try
+            {
+                refleY = double.Parse(txReflexaoY.Text);
+            }
+            catch (Exception e) { refleY = 0; };
+
             poli.inicializarMatriz();
 
-            if(angulo != 0)
+            if (refleY != 0)
+                poli.reflexaoX(refleX);
+
+            if (refleY != 0)
+                poli.reflexaoY(refleY);
+
+            if(cisaX != 0)            
+                poli.shearX(cisaX);            
+
+            if (cisaY != 0)            
+                poli.shearY(cisaY);
+            
+
+            if (angulo != 0)
             {
                 if (pontRotacao.X == 0 && pontRotacao.Y == 0)
                     poli.rotacao(angulo);
@@ -401,27 +485,41 @@ namespace PrimitivasGráficas
             }
             
             
-            if(escalaX != 0 && escalaY != 0)
-             poli.escala(escalaX, escalaY);
+            if(escalaX != 0 || escalaY != 0)
+            {
+                escalaY = escalaY == 0 ? 1 : escalaY;
+                escalaX = escalaX == 0 ? 1 : escalaX;
+                if (pontRotacao.X == 0 && pontRotacao.Y == 0)
+                    poli.escala(escalaX, escalaY);
+                else
+                    poli.escala(escalaX, escalaY, pontRotacao.X, pontRotacao.Y);
+            }
+           
+            if(transX != 0 || transY != 0)
+                 poli.translacao(transX, transY);
 
-            poli.translacao(transX, transY);
             poli.aplicarMA();            
 
         }
 
         private void BtAplicarTrans_Click(object sender, EventArgs e)
         {
-            NoRedo aux = imagens.Inicio;
-
-            while(aux != null)
+            
+            if(listPoli != null && listPoli.Count != 0)
             {
-                if (aux.Poligon != null)
-                    aplicaTransformacoes(aux.Poligon);
-
-                   aux = aux.Prox;
+                aplicaTransformacoes(listPoli[(listPoli.Count-1) - cbPoligonos.SelectedIndex]);
+                recriaFormas();
+                atualizaComboBox();
             }
+           
+            
+        }
 
-            recriaFormas();
+        private void cbPoligonos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ultimoselecionado = cbPoligonos.SelectedIndex;
+            dtPontosPoligono.DataSource = listPoli[cbPoligonos.SelectedIndex].PontosAtuais;
+           
         }
 
         private void BtResetarCamp_Click(object sender, EventArgs e)

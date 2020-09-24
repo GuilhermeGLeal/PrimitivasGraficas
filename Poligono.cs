@@ -145,7 +145,7 @@ namespace PrimitivasGráficas
             matrizEscala[1, 1] = fatorY;
             matrizEscala[2, 2] = 1.0;
             double soma;
-            double [,]matrizAux = new double[3, 3];
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
             // chamar a função de atribuir a matriz aux;
             for (int linha = 0; linha < 3; linha++)
             {
@@ -155,7 +155,7 @@ namespace PrimitivasGráficas
 
                     for (int k = 0; k < 3; k++)
                     {
-                        soma += matrizEscala[linha, k] * this.matrizAcumulada[k][coluna];
+                        soma += matrizEscala[linha, k] * matrizAux[k,coluna];
                     }
 
                     this.matrizAcumulada[linha][coluna] = soma;
@@ -174,7 +174,7 @@ namespace PrimitivasGráficas
             matrizAngulo[1, 0] = Math.Sin(rad);
             matrizAngulo[1, 1] = Math.Cos(rad);
             matrizAngulo[2, 2] = 1.0;
-            double[,] matrizAux = new double[3, 3];
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
@@ -183,7 +183,7 @@ namespace PrimitivasGráficas
 
                     for (int k = 0; k < 3; k++)
                     {
-                        soma += matrizAngulo[linha, k] * this.matrizAcumulada[k][coluna];
+                        soma += matrizAngulo[linha, k] * matrizAux[k, coluna];
                     }
 
                     this.matrizAcumulada[linha][coluna] = soma;
@@ -206,6 +206,114 @@ namespace PrimitivasGráficas
             this.translacao(X, Y);
         }
 
+
+        public void shearX(double fatorX)
+        {
+            double[,] matrizShear = new double[3, 3];
+
+            matrizShear[0, 0] = 1.0;
+            matrizShear[1, 1] = 1.0;
+            matrizShear[2, 2] = 1.0;
+            matrizShear[1, 0] = fatorX;
+            double soma;
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
+
+            for (int linha = 0; linha < 3; linha++)
+            {
+                for (int coluna = 0; coluna < 3; coluna++)
+                {
+                    soma = 0;
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        soma += matrizShear[linha, k] * matrizAux[k, coluna];
+                    }
+
+                    this.matrizAcumulada[linha][coluna] = soma;
+                }
+            }
+        }
+
+        public void shearY(double fatorY)
+        {
+            double[,] matrizShear = new double[3, 3];
+
+            matrizShear[0, 0] = 1.0;
+            matrizShear[1, 1] = 1.0;
+            matrizShear[2, 2] = 1.0;
+            matrizShear[0, 2] = fatorY;
+            double soma;
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
+
+            for (int linha = 0; linha < 3; linha++)
+            {
+                for (int coluna = 0; coluna < 3; coluna++)
+                {
+                    soma = 0;
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        soma += matrizShear[linha, k] * matrizAux[k, coluna];
+                    }
+
+                    this.matrizAcumulada[linha][coluna] = soma;
+                }
+            }
+        }
+
+        public void reflexaoX(double fatorX)
+        {
+            double[,] matrizReflexao = new double[3, 3];
+
+            matrizReflexao[0, 0] = 1.0;
+            matrizReflexao[1, 1] = fatorX;
+            matrizReflexao[2, 2] = 1.0;
+           
+            double soma;
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
+
+            for (int linha = 0; linha < 3; linha++)
+            {
+                for (int coluna = 0; coluna < 3; coluna++)
+                {
+                    soma = 0;
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        soma += matrizReflexao[linha, k] * matrizAux[k, coluna];
+                    }
+
+                    this.matrizAcumulada[linha][coluna] = soma;
+                }
+            }
+        }
+
+        public void reflexaoY(double fatorY)
+        {
+            double[,] matrizReflexao = new double[3, 3];
+
+            matrizReflexao[0, 0] = fatorY;
+            matrizReflexao[1, 1] = 1.0;
+            matrizReflexao[2, 2] = 1.0;
+
+            double soma;
+            double[,] matrizAux = retMatAux(this.matrizAcumulada);
+
+            for (int linha = 0; linha < 3; linha++)
+            {
+                for (int coluna = 0; coluna < 3; coluna++)
+                {
+                    soma = 0;
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        soma += matrizReflexao[linha, k] * matrizAux[k, coluna];
+                    }
+
+                    this.matrizAcumulada[linha][coluna] = soma;
+                }
+            }
+        }
 
         public void aplicarMA()
         {
@@ -232,7 +340,7 @@ namespace PrimitivasGráficas
                             soma += matrizAcumulada[linha][k] * pontosOrig[k, coluna];
                         }
 
-                        novoPonto[linha, coluna] = soma;
+                        novoPonto[linha, coluna] = Math.Round(soma);
                     }
 
                   
