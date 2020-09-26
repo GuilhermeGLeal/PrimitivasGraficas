@@ -60,7 +60,7 @@ namespace PrimitivasGráficas
             listPoli = new List<Poligono>();
             cbPoligonos.Items.Clear();
             ultimoselecionado = 0;
-            
+            atualizaComboBox();
 
         }
 
@@ -241,7 +241,15 @@ namespace PrimitivasGráficas
 
         public void atualizaComboBox()
         {
-            
+            try
+            {
+                dtPontosPoligono.DataSource = null;
+                dtPontosPoligono.Rows.Clear();
+                dtPontosPoligono.Refresh();
+            }
+            catch (Exception e) { }
+           
+
             listPoli = new List<Poligono>();
             NoRedo aux = imagens.Inicio;
             
@@ -264,8 +272,14 @@ namespace PrimitivasGráficas
             
             cbPoligonos.Items.Clear();
             cbPoligonos.Items.AddRange(posicoes.ToArray());
-            cbPoligonos.SelectedIndex = ultimoselecionado;
-            cbPoligonos_SelectedIndexChanged(null, null);
+            if(listPoli.Count != 0)
+            {
+                cbPoligonos.SelectedIndex = ultimoselecionado;
+                cbPoligonos_SelectedIndexChanged(null, null);
+            }
+            
+           
+            
         }
 
         private double verificaLimite(Ponto pontos)
@@ -356,13 +370,14 @@ namespace PrimitivasGráficas
             if (!imagens.isEmpty())
             {
                  recriaFormas();
-                atualizaComboBox();
+                
             }
             else
             {
                 BtLimparTela_Click(null, null);
             }
 
+            atualizaComboBox();
             picBoxPrincp.Focus();
         }
 
@@ -518,7 +533,12 @@ namespace PrimitivasGráficas
         private void cbPoligonos_SelectedIndexChanged(object sender, EventArgs e)
         {
             ultimoselecionado = cbPoligonos.SelectedIndex;
-            dtPontosPoligono.DataSource = listPoli[cbPoligonos.SelectedIndex].PontosAtuais;
+            dtPontosPoligono.DataSource = listPoli[(listPoli.Count - 1) - cbPoligonos.SelectedIndex].PontosAtuais;
+            foreach (DataGridViewColumn column in dtPontosPoligono.Columns)
+            {
+                column.Width = 50;
+            }
+            dtPontosPoligono.Focus();
            
         }
 

@@ -65,8 +65,6 @@
             this.cbPoligonos = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dtPontosPoligono = new System.Windows.Forms.DataGridView();
-            this.colunaX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txReflexaoY = new System.Windows.Forms.TextBox();
@@ -419,10 +417,9 @@
             // 
             this.dtPontosPoligono.AllowUserToAddRows = false;
             this.dtPontosPoligono.AllowUserToDeleteRows = false;
+            this.dtPontosPoligono.AllowUserToResizeColumns = false;
+            this.dtPontosPoligono.AllowUserToResizeRows = false;
             this.dtPontosPoligono.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtPontosPoligono.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colunaX,
-            this.y});
             this.dtPontosPoligono.Location = new System.Drawing.Point(1090, 519);
             this.dtPontosPoligono.Name = "dtPontosPoligono";
             this.dtPontosPoligono.ReadOnly = true;
@@ -431,24 +428,6 @@
             this.dtPontosPoligono.RowTemplate.Height = 24;
             this.dtPontosPoligono.Size = new System.Drawing.Size(150, 220);
             this.dtPontosPoligono.TabIndex = 42;
-            // 
-            // colunaX
-            // 
-            this.colunaX.DataPropertyName = "x";
-            this.colunaX.HeaderText = "X";
-            this.colunaX.MinimumWidth = 6;
-            this.colunaX.Name = "colunaX";
-            this.colunaX.ReadOnly = true;
-            this.colunaX.Width = 50;
-            // 
-            // y
-            // 
-            this.y.DataPropertyName = "y";
-            this.y.HeaderText = "Y";
-            this.y.MinimumWidth = 6;
-            this.y.Name = "y";
-            this.y.ReadOnly = true;
-            this.y.Width = 50;
             // 
             // label16
             // 
@@ -589,8 +568,6 @@
         private System.Windows.Forms.ComboBox cbPoligonos;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dtPontosPoligono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colunaX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn y;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txReflexaoY;
