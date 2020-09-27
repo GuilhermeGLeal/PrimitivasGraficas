@@ -206,8 +206,7 @@ namespace PrimitivasGráficas
             this.translacao(X, Y);
         }
 
-
-        public void shearX(double fatorX)
+        public void shearXY(double fatorX, double fatorY)
         {
             double[,] matrizShear = new double[3, 3];
 
@@ -215,32 +214,6 @@ namespace PrimitivasGráficas
             matrizShear[1, 1] = 1.0;
             matrizShear[2, 2] = 1.0;
             matrizShear[1, 0] = fatorX;
-            double soma;
-            double[,] matrizAux = retMatAux(this.matrizAcumulada);
-
-            for (int linha = 0; linha < 3; linha++)
-            {
-                for (int coluna = 0; coluna < 3; coluna++)
-                {
-                    soma = 0;
-
-                    for (int k = 0; k < 3; k++)
-                    {
-                        soma += matrizShear[linha, k] * matrizAux[k, coluna];
-                    }
-
-                    this.matrizAcumulada[linha][coluna] = soma;
-                }
-            }
-        }
-
-        public void shearY(double fatorY)
-        {
-            double[,] matrizShear = new double[3, 3];
-
-            matrizShear[0, 0] = 1.0;
-            matrizShear[1, 1] = 1.0;
-            matrizShear[2, 2] = 1.0;
             matrizShear[0, 2] = fatorY;
             double soma;
             double[,] matrizAux = retMatAux(this.matrizAcumulada);
@@ -260,6 +233,7 @@ namespace PrimitivasGráficas
                 }
             }
         }
+       
 
         public void reflexaoX(double fatorX)
         {

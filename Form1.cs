@@ -484,11 +484,9 @@ namespace PrimitivasGráficas
             if (refleY != 0)
                 poli.reflexaoY(refleY);
 
-            if(cisaX != 0)            
-                poli.shearX(cisaX);            
+            if(cisaX != 0 || cisaY != 0)            
+                poli.shearXY(cisaX, cisaY);            
 
-            if (cisaY != 0)            
-                poli.shearY(cisaY);
             
 
             if (angulo != 0)
