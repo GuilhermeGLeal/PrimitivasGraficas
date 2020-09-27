@@ -421,17 +421,14 @@ namespace PrimitivasGráficas
             pontRotacao.X = 0;
             pontRotacao.Y = 0;
 
-            try
-            {
-                if (rbCentro.Checked)
-                {
-                    pontRotacao.X = poli.retornaCX();
-                    pontRotacao.Y = poli.retornaCY();
 
-                }           
-                                    
-            }catch (Exception e) { }
-            
+            if (rbCentro.Checked)
+            {
+                pontRotacao.X = poli.retornaCX();
+                pontRotacao.Y = poli.retornaCY();
+
+            }
+
             try
             {
                 transX = double.Parse(txXtrans.Text);
@@ -478,7 +475,7 @@ namespace PrimitivasGráficas
 
             poli.inicializarMatriz();
 
-            if (refleY != 0)
+            if (refleX != 0)
                 poli.reflexaoX(refleX);
 
             if (refleY != 0)

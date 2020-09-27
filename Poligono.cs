@@ -146,7 +146,7 @@ namespace PrimitivasGráficas
             matrizEscala[2, 2] = 1.0;
             double soma;
             double[,] matrizAux = retMatAux(this.matrizAcumulada);
-            // chamar a função de atribuir a matriz aux;
+            
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
@@ -208,13 +208,22 @@ namespace PrimitivasGráficas
 
         public void shearXY(double fatorX, double fatorY)
         {
+            double X = retornaCX();
+            double Y = retornaCY();
+            this.translacao(-X, -Y);
+            this.shear(fatorX, fatorY);
+            this.translacao(X, Y);
+        }
+      
+        public void shear(double fatorX, double fatorY)
+        {
             double[,] matrizShear = new double[3, 3];
 
             matrizShear[0, 0] = 1.0;
             matrizShear[1, 1] = 1.0;
             matrizShear[2, 2] = 1.0;
             matrizShear[1, 0] = fatorX;
-            matrizShear[0, 2] = fatorY;
+            matrizShear[0, 1] = fatorY;
             double soma;
             double[,] matrizAux = retMatAux(this.matrizAcumulada);
 
