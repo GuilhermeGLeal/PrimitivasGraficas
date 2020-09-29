@@ -54,7 +54,9 @@
     </Compile>
     <Compile Include="MetodosCriacaodeLinhas.cs" />
     <Compile Include="MetodosCriadoresdeCirculos.cs" />
+    <Compile Include="NoPilha.cs" />
     <Compile Include="NoRedo.cs" />
+    <Compile Include="PilhaCor.cs" />
     <Compile Include="PilhaRedo.cs" />
     <Compile Include="Poligono.cs" />
     <Compile Include="Ponto.cs" />
