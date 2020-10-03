@@ -511,7 +511,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 802);
+            this.ClientSize = new System.Drawing.Size(1489, 802);
             this.Controls.Add(this.ckScanLine);
             this.Controls.Add(this.ckFloodFill);
             this.Controls.Add(this.btPintar);
