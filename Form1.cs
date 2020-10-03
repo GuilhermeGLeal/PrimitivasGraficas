@@ -14,7 +14,7 @@ namespace PrimitivasGráficas
     {
         private Image imagePrincipal;
         private Bitmap imagePrincp;
-
+        private Bitmap imageViewPort;
         private Ponto pontAtual;
         private PilhaRedo imagens;
 
@@ -190,7 +190,10 @@ namespace PrimitivasGráficas
                     MetodosCriacaodeLinhas.bresenham2(imagePrincp, (int)novo.XInicio, (int)novo.XFinal, (int)novo.YInicio, (int)novo.YFinal);
                     picBoxPrincp.Image = imagePrincp;
                     break;
-
+                case "VIEWPORT":
+                    MetodosCriacaodeLinhas.DDA(imageViewPort, novo);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
             }          
                       
         }
@@ -211,6 +214,23 @@ namespace PrimitivasGráficas
             pontAtual.transferePonto2(aux.PontosAtuais[aux.PontosAtuais.Count-1], aux.PontosAtuais[0]);
 
             chamaCriaFormas("DDA", pontAtual);
+        }
+        private void recriaPoligonoViewPort(Poligono aux)
+        {
+
+            for (int i = 0; i < aux.PontosViewPort.Count; i++)
+            {
+                if (i >= 1)
+                {
+                    pontAtual.transferePonto2(aux.PontosViewPort[i - 1], aux.PontosViewPort[i]);
+
+                    chamaCriaFormas("VIEWPORT", pontAtual);
+                }
+            }
+
+            pontAtual.transferePonto2(aux.PontosViewPort[aux.PontosViewPort.Count - 1], aux.PontosViewPort[0]);
+
+            chamaCriaFormas("VIEWPORT", pontAtual);
         }
 
         private void recriaFormas()
@@ -570,6 +590,29 @@ namespace PrimitivasGráficas
             pintar = !pintar;
             ckFloodFill.Enabled = pintar;
             ckScanLine.Enabled = pintar;
+        }
+
+        private void btViewport_Click(object sender, EventArgs e)
+        {
+            int widthViewBox, heightViewBox;
+            try
+            {             
+                int.TryParse(txX.Text, out widthViewBox);
+                int.TryParse(txY.Text, out heightViewBox);
+            }
+            catch(Exception ex)
+            {
+                widthViewBox = imagePrincp.Width;
+                heightViewBox = imagePrincp.Height;
+            }
+            imageViewPort = new Bitmap(widthViewBox,heightViewBox);
+            picBoxViewPort.Width = widthViewBox;
+            picBoxViewPort.Height = heightViewBox;
+            for(int i=0;i<listPoli.Count();i++)
+            {
+                listPoli[i].viewPort(imagePrincp, imageViewPort);
+                recriaPoligonoViewPort(listPoli[i]);
+            }
         }
 
         private void BtResetarCamp_Click(object sender, EventArgs e)

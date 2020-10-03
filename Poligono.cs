@@ -12,16 +12,19 @@ namespace PrimitivasGráficas
     {
         private List<Ponto2> pontosOriginais;
         private List<Ponto2> pontosAtuais;
+        private List<Ponto2> pontosViewPort;
         private double[][] matrizAcumulada;
         private bool inicializado;
 
         public List<Ponto2> PontosOriginais { get => pontosOriginais; set => pontosOriginais = value; }
         public List<Ponto2> PontosAtuais { get => pontosAtuais; set => pontosAtuais = value; }
+        public List<Ponto2> PontosViewPort { get => pontosViewPort; set => pontosViewPort = value; }
 
         public Poligono()
         {
             this.pontosAtuais = new List<Ponto2>();
             this.pontosOriginais = new List<Ponto2>();
+            
 
             this.matrizAcumulada = new double[3][];
 
@@ -541,5 +544,20 @@ namespace PrimitivasGráficas
           
         }
 
+        public void viewPort(Bitmap bit,Bitmap bitdest)
+        {
+            this.pontosViewPort = new List<Ponto2>();
+            double sx,sy;
+            sx = (double)(bitdest.Width)/(double)(bit.Width);
+            sy = (double)(bitdest.Height)/(double)(bit.Height);
+            Ponto2 p;
+            for(int i=0;i<pontosAtuais.Count();i++)
+            {                
+                p = new Ponto2(pontosAtuais[i].X, pontosAtuais[i].Y);
+                p.X = Math.Round(p.X * sx);
+                p.Y = Math.Round(p.Y * sy);
+                pontosViewPort.Add(p);
+            }
+        }
     }
 }
