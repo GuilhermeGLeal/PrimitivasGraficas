@@ -23,6 +23,11 @@ namespace PrimitivasGráficas
             return aux;
         }
         
+        public bool isEmpty()
+        {
+            return inicio == null;   
+        }
+
         public void inserir(Ponto2 pont)
         {
             NoPilha novo = new NoPilha(pont, inicio);

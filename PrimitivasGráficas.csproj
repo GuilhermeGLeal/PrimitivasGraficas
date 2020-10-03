@@ -52,8 +52,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListaET.cs" />
     <Compile Include="MetodosCriacaodeLinhas.cs" />
     <Compile Include="MetodosCriadoresdeCirculos.cs" />
+    <Compile Include="NoListaET.cs" />
     <Compile Include="NoPilha.cs" />
     <Compile Include="NoRedo.cs" />
     <Compile Include="PilhaCor.cs" />

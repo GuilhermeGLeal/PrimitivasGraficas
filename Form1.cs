@@ -22,6 +22,7 @@ namespace PrimitivasGráficas
         private Ponto2 inicial, atual;
         private List<Poligono> listPoli;
         private int ultimoselecionado;
+        private bool pintar;
 
         public Form1()
         {
@@ -44,6 +45,9 @@ namespace PrimitivasGráficas
             picBoxPrincp.Focus();
             resetaPontos();
             ultimoselecionado = 0;
+            pintar = false;
+            ckFloodFill.Enabled = false;
+            ckScanLine.Enabled = false;
         }
 
         private void BtLimparTela_Click(object sender, EventArgs e)
@@ -61,7 +65,9 @@ namespace PrimitivasGráficas
             cbPoligonos.Items.Clear();
             ultimoselecionado = 0;
             atualizaComboBox();
-
+            pintar = false;
+            ckFloodFill.Enabled = false;
+            ckScanLine.Enabled = false;
         }
 
         public void inicializarPolig()
@@ -329,37 +335,59 @@ namespace PrimitivasGráficas
 
         private void PicBoxPrincp_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            if(cbFormaSelecionada.SelectedIndex == 3)
+
+            if (!pintar)
             {
-                if (poligAtual == null)
+                if (cbFormaSelecionada.SelectedIndex == 3)
                 {
-                    poligAtual = new Poligono();
-                    
-                    imagens.inserir(poligAtual, "POLIGONO");
+                    if (poligAtual == null)
+                    {
+                        poligAtual = new Poligono();
+
+                        imagens.inserir(poligAtual, "POLIGONO");
+                    }
+
+                    criaPoligono(e);
+
                 }
-                                    
-                criaPoligono(e);
-                
+                else
+                {
+                    if (pontAtual.XInicio == -99999.0)
+                    {
+                        pontAtual.XInicio = e.X;
+                        pontAtual.YInicio = e.Y;
+
+                    }
+                    else if (pontAtual.XFinal == -1.0)
+                    {
+                        pontAtual.XFinal = e.X;
+                        pontAtual.YFinal = e.Y;
+
+                        chamaCriaFormas2();
+                    }
+
+                    picBoxPrincp.Focus();
+                }
             }
             else
             {
-                if (pontAtual.XInicio == -99999.0)
+                if (listPoli.Count > 0)
                 {
-                    pontAtual.XInicio = e.X;
-                    pontAtual.YInicio = e.Y;
+                    if (ckFloodFill.Checked)
+                    {
+                        listPoli[(listPoli.Count - 1) - cbPoligonos.SelectedIndex].floodFill((int)e.X, (int)e.Y, imagePrincp);
+                        picBoxPrincp.Image = imagePrincp;
+                       
+                    }
+                    else if(ckScanLine.Checked)
+                    {
+                        listPoli[(listPoli.Count - 1) - cbPoligonos.SelectedIndex].carregaListaET(imagePrincp);
+                        picBoxPrincp.Image = imagePrincp;
+                    }
 
                 }
-                else if (pontAtual.XFinal == -1.0)
-                {
-                    pontAtual.XFinal = e.X;
-                    pontAtual.YFinal = e.Y;
-
-                    chamaCriaFormas2();
-                }
-
-                picBoxPrincp.Focus();
             }
+           
           
         }
 
@@ -535,6 +563,13 @@ namespace PrimitivasGráficas
             }
             dtPontosPoligono.Focus();
            
+        }
+
+        private void btPintar_Click(object sender, EventArgs e)
+        {
+            pintar = !pintar;
+            ckFloodFill.Enabled = pintar;
+            ckScanLine.Enabled = pintar;
         }
 
         private void BtResetarCamp_Click(object sender, EventArgs e)

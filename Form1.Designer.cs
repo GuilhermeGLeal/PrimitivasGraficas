@@ -70,6 +70,9 @@
             this.txReflexaoY = new System.Windows.Forms.TextBox();
             this.txReflexaoX = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.btPintar = new System.Windows.Forms.Button();
+            this.ckFloodFill = new System.Windows.Forms.CheckBox();
+            this.ckScanLine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPrincp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPontosPoligono)).BeginInit();
             this.SuspendLayout();
@@ -474,11 +477,44 @@
             this.label18.TabIndex = 43;
             this.label18.Text = "Reflexão";
             // 
+            // btPintar
+            // 
+            this.btPintar.Location = new System.Drawing.Point(875, 707);
+            this.btPintar.Name = "btPintar";
+            this.btPintar.Size = new System.Drawing.Size(130, 32);
+            this.btPintar.TabIndex = 48;
+            this.btPintar.Text = "Pintar Poligono";
+            this.btPintar.UseVisualStyleBackColor = true;
+            this.btPintar.Click += new System.EventHandler(this.btPintar_Click);
+            // 
+            // ckFloodFill
+            // 
+            this.ckFloodFill.AutoSize = true;
+            this.ckFloodFill.Location = new System.Drawing.Point(838, 745);
+            this.ckFloodFill.Name = "ckFloodFill";
+            this.ckFloodFill.Size = new System.Drawing.Size(86, 21);
+            this.ckFloodFill.TabIndex = 49;
+            this.ckFloodFill.Text = "Flood Fill";
+            this.ckFloodFill.UseVisualStyleBackColor = true;
+            // 
+            // ckScanLine
+            // 
+            this.ckScanLine.AutoSize = true;
+            this.ckScanLine.Location = new System.Drawing.Point(955, 745);
+            this.ckScanLine.Name = "ckScanLine";
+            this.ckScanLine.Size = new System.Drawing.Size(93, 21);
+            this.ckScanLine.TabIndex = 50;
+            this.ckScanLine.Text = "Scan Line";
+            this.ckScanLine.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1433, 802);
+            this.Controls.Add(this.ckScanLine);
+            this.Controls.Add(this.ckFloodFill);
+            this.Controls.Add(this.btPintar);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txReflexaoY);
@@ -573,6 +609,9 @@
         private System.Windows.Forms.TextBox txReflexaoY;
         private System.Windows.Forms.TextBox txReflexaoX;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btPintar;
+        private System.Windows.Forms.CheckBox ckFloodFill;
+        private System.Windows.Forms.CheckBox ckScanLine;
     }
 }
 
