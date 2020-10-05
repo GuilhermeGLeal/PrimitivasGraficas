@@ -610,7 +610,7 @@ namespace PrimitivasGráficas
             picBoxViewPort.Height = heightViewBox;
             for(int i=0;i<listPoli.Count();i++)
             {
-                listPoli[i].viewPort(imagePrincp, imageViewPort);
+                listPoli[i].viewPort(picBoxPrincp.Width,picBoxPrincp.Height,imageViewPort);
                 recriaPoligonoViewPort(listPoli[i]);
             }
         }

@@ -544,12 +544,12 @@ namespace PrimitivasGráficas
           
         }
 
-        public void viewPort(Bitmap bit,Bitmap bitdest)
+        public void viewPort(int width,int height,Bitmap bitdest)
         {
             this.pontosViewPort = new List<Ponto2>();
             double sx,sy;
-            sx = (double)(bitdest.Width)/(double)(bit.Width);
-            sy = (double)(bitdest.Height)/(double)(bit.Height);
+            sx = (double)(bitdest.Width)/(double)(width);
+            sy = (double)(bitdest.Height)/(double)(height);
             Ponto2 p;
             for(int i=0;i<pontosAtuais.Count();i++)
             {                

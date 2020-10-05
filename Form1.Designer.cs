@@ -583,9 +583,9 @@
             // picBoxViewPort
             // 
             this.picBoxViewPort.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.picBoxViewPort.Location = new System.Drawing.Point(1202, 45);
+            this.picBoxViewPort.Location = new System.Drawing.Point(1069, 12);
             this.picBoxViewPort.Name = "picBoxViewPort";
-            this.picBoxViewPort.Size = new System.Drawing.Size(100, 50);
+            this.picBoxViewPort.Size = new System.Drawing.Size(150, 553);
             this.picBoxViewPort.TabIndex = 54;
             this.picBoxViewPort.TabStop = false;
             // 
@@ -593,7 +593,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1421, 652);
+            this.ClientSize = new System.Drawing.Size(1479, 652);
             this.Controls.Add(this.picBoxViewPort);
             this.Controls.Add(this.txY);
             this.Controls.Add(this.txX);
