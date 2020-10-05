@@ -27,6 +27,7 @@ namespace PrimitivasGráficas
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             imagePrincp = new Bitmap(1409, 537);
             imagePrincipal = imagePrincp;
 
@@ -44,10 +45,13 @@ namespace PrimitivasGráficas
             atual = null;
             picBoxPrincp.Focus();
             resetaPontos();
+            listPoli = new List<Poligono>();
             ultimoselecionado = 0;
             pintar = false;
-            ckFloodFill.Enabled = false;
+            ckFlooddFill.Enabled = false;
             ckScanLine.Enabled = false;
+            txX.Text = "" + 100;
+            txY.Text = "" + 100;
         }
 
         private void BtLimparTela_Click(object sender, EventArgs e)
@@ -66,8 +70,13 @@ namespace PrimitivasGráficas
             ultimoselecionado = 0;
             atualizaComboBox();
             pintar = false;
-            ckFloodFill.Enabled = false;
+            ckFlooddFill.Enabled = false;
             ckScanLine.Enabled = false;
+            txX.Text = "" + 100;
+            txY.Text = "" + 100;
+
+            imageViewPort = new Bitmap(100, 100);
+            picBoxViewPort.Image = imageViewPort;
         }
 
         public void inicializarPolig()
@@ -300,6 +309,9 @@ namespace PrimitivasGráficas
             cbPoligonos.Items.AddRange(posicoes.ToArray());
             if(listPoli.Count != 0)
             {
+                if (ultimoselecionado >= listPoli.Count)
+                    ultimoselecionado--;
+
                 cbPoligonos.SelectedIndex = ultimoselecionado;
                 cbPoligonos_SelectedIndexChanged(null, null);
             }
@@ -326,8 +338,8 @@ namespace PrimitivasGráficas
             }
             else
             {
-                if((e.X < poligAtual.getPontoOriginalX(0) - 3  || e.X > poligAtual.getPontoOriginalX(0) + 3) &&
-                    (e.Y < poligAtual.getPontoOriginalY(0) -3 || e.Y > poligAtual.getPontoOriginalY(0) + 3))
+                if((e.X < poligAtual.getPontoOriginalX(0) - 5  || e.X > poligAtual.getPontoOriginalX(0) + 5) ||
+                    (e.Y < poligAtual.getPontoOriginalY(0) - 5 || e.Y > poligAtual.getPontoOriginalY(0) + 5))
                 {
                     atual = new Ponto2(e.X, e.Y);
                     poligAtual.addPonto(atual);
@@ -393,7 +405,7 @@ namespace PrimitivasGráficas
             {
                 if (listPoli.Count > 0)
                 {
-                    if (ckFloodFill.Checked)
+                    if (ckFlooddFill.Checked)
                     {
                         listPoli[(listPoli.Count - 1) - cbPoligonos.SelectedIndex].floodFill((int)e.X, (int)e.Y, imagePrincp);
                         picBoxPrincp.Image = imagePrincp;
@@ -588,7 +600,7 @@ namespace PrimitivasGráficas
         private void btPintar_Click(object sender, EventArgs e)
         {
             pintar = !pintar;
-            ckFloodFill.Enabled = pintar;
+            ckFlooddFill.Enabled = pintar;
             ckScanLine.Enabled = pintar;
         }
 
@@ -613,6 +625,11 @@ namespace PrimitivasGráficas
                 listPoli[i].viewPort(picBoxPrincp.Width,picBoxPrincp.Height,imageViewPort);
                 recriaPoligonoViewPort(listPoli[i]);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void BtResetarCamp_Click(object sender, EventArgs e)
