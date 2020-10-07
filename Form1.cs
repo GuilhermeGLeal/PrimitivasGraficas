@@ -203,6 +203,34 @@ namespace PrimitivasGráficas
                     MetodosCriacaodeLinhas.DDA(imageViewPort, novo);
                     picBoxViewPort.Image = imageViewPort;
                     break;
+                case "EQUACAO2":
+                    MetodosCriadoresdeCirculos.equacaoGeral(imageViewPort, novo, Raio);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "TRIGO2":
+                    MetodosCriadoresdeCirculos.trignometria(imageViewPort, novo, Raio);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "PONTO2":
+                    MetodosCriadoresdeCirculos.pontoMedio(imageViewPort, novo, Raio);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "ELIPSE2":
+                    MetodosCriadoresdeCirculos.MidpointElipse(novo, imageViewPort);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "DDA2":
+                    MetodosCriacaodeLinhas.DDA(imageViewPort, novo);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "EQUACAOREAL2":
+                    MetodosCriacaodeLinhas.EquacaoRealdaReta(imageViewPort, novo);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
+                case "BRESENHAM2":
+                    MetodosCriacaodeLinhas.bresenham2(imageViewPort, (int)novo.XInicio, (int)novo.XFinal, (int)novo.YInicio, (int)novo.YFinal);
+                    picBoxViewPort.Image = imageViewPort;
+                    break;
             }          
                       
         }
@@ -224,6 +252,7 @@ namespace PrimitivasGráficas
 
             chamaCriaFormas("DDA", pontAtual);
         }
+
         private void recriaPoligonoViewPort(Poligono aux)
         {
 
@@ -272,6 +301,34 @@ namespace PrimitivasGráficas
                      imagens.inserir(retirados[i].Info, retirados[i].Metodo);
            }
           
+        }
+
+        private void recriaFormas2()
+        {       
+          
+            NoRedo aux = imagens.Inicio;
+            
+
+            while (aux != null)
+            {
+                if (aux.Poligon != null)
+                    recriaPoligonoViewPort(aux.Poligon);
+                else
+                {
+                    Ponto pontAux = new Ponto();
+                    pontAux.XInicio = aux.Info.XInicioWP;
+                    pontAux.XFinal = aux.Info.XFinalWP;
+                    pontAux.YInicio = aux.Info.YInicioWP;
+                    pontAux.YFinal = aux.Info.YFinalWP;
+
+                    chamaCriaFormas(aux.Metodo + "2", pontAux);
+                }
+                 
+               
+                aux = aux.Prox;
+            }
+            
+
         }
 
         public void atualizaComboBox()
@@ -441,20 +498,7 @@ namespace PrimitivasGráficas
             picBoxPrincp.Focus();
         }
 
-        private void BtTesteLinhas_Click(object sender, EventArgs e)
-        {
-            /*
-            BtLimparTela_Click(null, null);
-            int i = 0;
-            double xi = 400, yi = 100;
-            double yf = 300, xf = 400;
-            bool flag;
-
-            cbOpcoesLinha.SelectedIndex = 2;
-            flag = true;*/
-
-        }
-
+      
 
         private void resetaPontos()
         {
@@ -617,14 +661,30 @@ namespace PrimitivasGráficas
                 widthViewBox = imagePrincp.Width;
                 heightViewBox = imagePrincp.Height;
             }
+
             imageViewPort = new Bitmap(widthViewBox,heightViewBox);
             picBoxViewPort.Width = widthViewBox;
             picBoxViewPort.Height = heightViewBox;
+
             for(int i=0;i<listPoli.Count();i++)
             {
                 listPoli[i].viewPort(picBoxPrincp.Width,picBoxPrincp.Height,imageViewPort);
-                recriaPoligonoViewPort(listPoli[i]);
+                
             }
+
+            NoRedo aux = imagens.Inicio;
+            while(aux != null)
+            {
+                if(aux.Poligon == null)
+                {
+                    aux.Info.viewPort(picBoxPrincp.Width, picBoxPrincp.Height, imageViewPort);
+                }
+
+                aux = aux.Prox;
+
+            }
+
+            recriaFormas2();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -226,8 +226,8 @@ namespace PrimitivasGráficas
             matrizShear[0, 0] = 1.0;
             matrizShear[1, 1] = 1.0;
             matrizShear[2, 2] = 1.0;
-            matrizShear[1, 0] = fatorX;
-            matrizShear[0, 1] = fatorY;
+            matrizShear[1, 0] = fatorY;
+            matrizShear[0, 1] = fatorX;
             double soma;
             double[,] matrizAux = retMatAux(this.matrizAcumulada);
 
